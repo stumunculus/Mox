@@ -5,16 +5,20 @@ module CreatureStuff
   def pt
     "#{self.power}/#{self.toughness}"
   end
-end 
+end
 
 module ArtifactStuff
+
+
+
 end
 
 module EnchantmentStuff
+
 end
 
 module LandStuff
-end 
+end
 
 module PlaneswalkerStuff
   attr_accessor :loyalty
@@ -23,11 +27,11 @@ end
 
 class Card
   attr_accessor :supertype, :name, :mana_cost, :set, :text, :type, :subtype, :rarity, :collectors_no, :flavor, :artist
-  def initialize args 
+  def initialize args
     args.each do |k,v|
       instance_variable_set("@#{k}", v) unless v.nil?
     end
-    @type = self.class  
+    @type = self.class
   end
 
   def cmc
@@ -41,8 +45,9 @@ class Card
 
   def color_id
     color_id = []
-    self.mana_cost.split("").each do |t| 
-      
+    self.mana_cost.split("").each do |t|
+       #Stu Put Stuff Here
+
     end
   end
 end
@@ -65,18 +70,18 @@ class Artifact < Permanent
   include ArtifactStuff
 end
 
-class Planeswalker < Permanent 
+class Planeswalker < Permanent
   include PlaneswalkerStuff
 end
 
-class Land < Permanent 
-  
+class Land < Permanent
+
 end
- 
+
 class Enchantment < Permanent
 end
 
-class ArtifactCreature < Permanent 
+class ArtifactCreature < Permanent
   include CreatureStuff
-  include ArtifactStuff 
+  include ArtifactStuff
 end
