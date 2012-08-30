@@ -42,13 +42,30 @@ class Card
     end
     cmc
   end
-
-  def color_id
-    color_id = []
-    self.mana_cost.split("").each do |t|
-       #Stu Put Stuff Here
-
+  def is_multicolored?
+    if self.color_id.size >= 2
+      true
+    else
+      false
     end
+  end
+  def color_id
+    colors = []
+    self.mana_cost.split("").each do |t|
+       case t
+       when "W"
+        colors << "White"
+       when "U"
+        colors << "Blue"
+       when "B"
+        colors << "Black"
+       when "R"
+        colors << "Red"
+       when "G"
+        colors << "Green"
+       end
+     end
+     colors.uniq
   end
 end
 
